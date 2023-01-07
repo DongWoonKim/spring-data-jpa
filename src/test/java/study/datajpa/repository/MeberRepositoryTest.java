@@ -58,4 +58,25 @@ class MeberRepositoryTest {
 
     }
 
+    @Test
+    public void findByUsernameAndAgeGreaterThen() {
+
+        Member m1 = new Member("memberA", 10);
+        Member m2 = new Member("memberB", 20);
+        Member savedM1 = memberRepository.save(m1);
+        Member savedM2 = memberRepository.save(m2);
+
+        List<Member> m1Result = memberRepository.findByUsernameAndAgeGreaterThan(savedM1.getUsername(), 8);
+        List<Member> m2Result = memberRepository.findByUsernameAndAgeGreaterThan(savedM2.getUsername(), 8);
+
+        assertEquals(m1Result.get(0).getUsername(), savedM1.getUsername());
+        assertEquals(m2Result.get(0).getUsername(), savedM2.getUsername());
+
+    }
+
+    @Test
+    public void findHelloBy() {
+        List<Member> helloBy = memberRepository.findTop3HelloBy();
+    }
+
 }
