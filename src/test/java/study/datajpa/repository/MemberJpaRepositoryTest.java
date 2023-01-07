@@ -18,7 +18,7 @@ class MemberJpaRepositoryTest {
 
     @Test
     public void testMember() {
-        Member member = Member.builder()
+        Member member = Member.builder1()
                 .username("memberA")
                 .build();
         Member savedMember = memberJpaRepository.save(member);
