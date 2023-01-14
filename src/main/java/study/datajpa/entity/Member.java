@@ -6,7 +6,7 @@ import lombok.*;
 import static jakarta.persistence.FetchType.*;
 
 @Entity
-@Getter
+@Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id", "username", "age"})
 public class Member {
