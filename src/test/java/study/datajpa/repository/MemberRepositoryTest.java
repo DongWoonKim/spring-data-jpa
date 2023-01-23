@@ -308,5 +308,4 @@ class MemberRepositoryTest {
 
     }
 
-
 }
