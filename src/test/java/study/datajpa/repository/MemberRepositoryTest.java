@@ -336,4 +336,30 @@ class MemberRepositoryTest {
 
     }
 
+    @Test
+    public void projections() {
+
+        // given
+        Team teamA = new Team("teamA");
+        em.persist(teamA);
+
+        Member m1 = new Member(0, "m1", teamA);
+        Member m2 = new Member(0, "m2", teamA);
+        em.persist(m1);
+        em.persist(m2);
+
+        em.flush();
+        em.clear();
+
+        // when
+        List<NestedClosedProjections> result = memberRepository.findProjectionsByUsername("m1", NestedClosedProjections.class);
+        for (NestedClosedProjections nestedClosedProjections : result) {
+            String username = nestedClosedProjections.getUsername();
+            String teamName = nestedClosedProjections.getTeam().getName();
+
+            System.out.println( username + " : " + teamName );
+        }
+
+    }
+
 }
